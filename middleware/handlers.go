@@ -7,7 +7,6 @@ import (
 	"go-postgres/models"
 	"log"
 	"net/http"
-	"os"
 	"strconv"
 
 	"github.com/gorilla/mux"
@@ -25,7 +24,8 @@ func createConnection() *sql.DB {
 	if err == nil {
 		log.Fatal("Error loading .env file")
 	}
-	db, err := sql.Open("postgres", os.Getenv("POSTGRESS_URL"))
+	// db, err := sql.Open("postgres", os.Getenv("POSTGRESS_URL1"))
+	db, err := sql.Open("postgres", "user=postgres password=postgres dbname=stocksdb sslmode=disable")
 	// log.Fatal("test %v", err)
 
 	if err != nil {
